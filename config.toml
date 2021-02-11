@@ -1,0 +1,46 @@
+# The URL the site will be built for
+base_url = "https://astrale-sharp.github.io/"
+theme = "anemone"
+# default_language = "en"
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[extra]
+
+# list_pages = true
+# toc = true
+twitter_card = false
+author = "Astrale Cercy"
+
+[[extra.header_nav]]
+en = { name = "/home", url = "/" }
+[[extra.header_nav]]
+en = { name = "/blog", url = "/blog" }
+[[extra.header_nav]]
+en = { name = "/resume", url = "/resume" }
+
+
+# header_nav = [
+#   { name = "/blog/", url = "/blog" },
+#   { name = "/home/", url = "/" },
+# ]
+
+
+
+#   { name = "/about/", url = "/about" },
+#   { name = "/journal/", url = "/journal" },
+#   { name = "/blog/", url = "/blog" },
+# ]
+
+# footer_nav = [
+#   { name = "< previous", url = "#" },
+#   { name = "webring", url = "#" },
+#   { name = "next >", url = "#" },
+# ]
