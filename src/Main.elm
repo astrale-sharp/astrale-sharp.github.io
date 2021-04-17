@@ -5,7 +5,7 @@ import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Url
-
+import Browser.Navigation exposing (load)
 
 
 -- MAIN
@@ -52,11 +52,14 @@ update msg model =
   case msg of
     LinkClicked urlRequest ->
       case urlRequest of
-        Browser.Internal url ->
-          ( model, Nav.pushUrl model.key (Url.toString url) )
 
         Browser.External href ->
           ( model, Nav.load href )
+
+        Browser.Internal url ->
+      
+          ( model, Nav.load url.path )
+          -- ( model, Nav.pushUrl model.key (Url.toString url) )
 
     UrlChanged url ->
       ( { model | url = url }
@@ -84,11 +87,11 @@ view model =
       [ text "The current URL is: "
       , b [] [ text (Url.toString model.url) ]
       , ul []
-          [ viewLink "/home"
-          , viewLink "/profile"
-          , viewLink "/reviews/the-century-of-the-self"
-          , viewLink "/reviews/public-opinion"
-          , viewLink "/reviews/shah-of-shahs"
+          [ viewLink "/godot/godot.html"
+          -- , viewLink "/profile"
+          -- , viewLink "/reviews/the-century-of-the-self"
+          -- , viewLink "/reviews/public-opinion"
+          -- , viewLink "/reviews/shah-of-shahs"
           ]
       ]
   }
