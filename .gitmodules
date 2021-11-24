@@ -1,0 +1,3 @@
+[submodule "equilibre_equation"]
+	path = equilibre_equation
+	url = git@github.com:astrale-sharp/equilibre_equation.git
