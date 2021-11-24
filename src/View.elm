@@ -69,6 +69,7 @@ viewHome =
             et disponible sur certains de mes repos git que vous êtes """
             , myLink "cordialement invité à visiter" "https://github.com/astrale-sharp"
             ]
+        , godotlink "../equilibre_equation/export/godot.html" "test-godot-online"
         ]
 
 
