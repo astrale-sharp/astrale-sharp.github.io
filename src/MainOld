@@ -1,0 +1,208 @@
+module MainOld exposing (..)
+
+import Browser
+import ColorPalette as Clr
+import Debug exposing (toString)
+import Dict exposing (update)
+import Element exposing (..)
+import Element.Background as Background exposing (color)
+import Element.Border as Border exposing (glow)
+import Element.Events as Events
+import Element.Font as F
+import Element.Input as Input
+import Html as H
+
+
+type Msg
+    = Op String
+    | OpBool Bool
+
+
+type alias Model =
+    { value : String
+    , checked : Bool
+    }
+
+
+init : { value : String, checked : Bool }
+init =
+    { value = "", checked = True }
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        NoOp ->
+            { model | value = "" }
+
+        Op str ->
+            { model | value = str }
+
+        OpBool bool ->
+            { model | checked = not bool }
+
+
+main : Program () Model Msg
+main =
+    Browser.sandbox { init = init, view = view, update = update }
+
+
+view : Model -> H.Html Msg
+view msg =
+    -- layout
+    layout
+        [ Background.color Clr.midNightBlue
+        , F.color (rgb 1 1 1)
+        , F.family
+            [ F.typeface "Open Sans"
+            , F.sansSerif
+            ]
+        ]
+        (el
+            []
+            (column
+                [ width (960 |> px)
+
+                -- , height (900 |> px)
+                , padding 10
+                , spacing 7
+                ]
+                [ viewTopBar
+                , myparagraph <|
+                    [ text
+                        "Ce site internet reference quelques simulations de physique chimie..."
+                    ]
+                , myparagraph <|
+                    [ text
+                        "Pour le niveau de 5e:"
+                    ]
+                , godotlink "../assets/4e/simulation_act1/godot.html" "actvité domino de l'espace"
+                , myparagraph <|
+                    [ text
+                        "Pour le niveau de 4e:"
+                    ]
+                , godotlink "../assets/4e/equilibre_chimique/godot.html" "équilibrer des équations"
+                , download
+                    [ F.color <| rgb 0 0 1
+                    , F.underline
+                    ]
+                    { url = "../assets/4e/4e.zip", label = text "Télecharger le cours" }
+                , viewDebug msg
+                , viewDebugTest msg
+                , el [ height (px 200) ] none
+                , viewBottomBar
+                ]
+            )
+        )
+
+
+
+-- this is the interesting stuff being rendered
+-- viewPageContent : Element msg
+
+
+viewPageContent : Element Msg
+viewPageContent =
+    none
+
+
+myparagraph : List (Element msg) -> Element msg
+myparagraph x =
+    paragraph
+        [ width (px 350)
+        , Background.color Clr.lighterBlue
+        ]
+        x
+
+
+godotlink : String -> String -> Element msg
+godotlink url label =
+    newTabLink
+        [ F.color <| rgb 0 0 1
+        , F.underline
+        ]
+        { url = url
+        , label =
+            text label
+        }
+
+
+viewTopBar : Element msg
+viewTopBar =
+    none
+
+
+viewBottomBar : Element Msg
+viewBottomBar =
+    column
+        [ width fill
+        , height (px 70)
+        , alignBottom
+        , centerX
+        , Border.width 1
+        , Border.rounded 5
+        , Border.color <| rgb 0 0 0
+        , Background.gradient
+            { angle = 3 * pi / 4
+            , steps = [ Clr.yellowOrange, Clr.goldFusion ]
+            }
+        ]
+        [ el
+            [ centerX
+            , centerY
+            ]
+          <|
+            text "Bottom bar"
+        ]
+
+
+viewDebugTest : Model -> Element Msg
+viewDebugTest msg =
+    text msg.value
+
+
+
+-- viewDebug : Model -> Element Msg
+
+
+viewDebug msg =
+    none
+
+
+
+-- Input.radio
+--     [ padding 10
+--     , spacing 20
+--     ]
+--     { onChange = Op
+--     , selected = Nothing
+--     , label = Input.labelAbove [] (text "Lunch")
+--     , options =
+--         [ Input.option "Burrito" (text "Burrito")
+--         , Input.option "Taco" (text "Taco!")
+--         , Input.option "Gyro" (text "Gyro")
+--         ]
+--     }
+-- el [ Events.onClick <| OpBool msg.checked ] (Input.defaultCheckbox msg.checked)
+-- Input.checkbox []
+--     { label = Input.labelHidden ""
+--     , icon = Input.defaultCheckbox
+--     , checked = True
+--     , onChange = OpBool
+--     }
+-- Input.text []
+--     { onChange = Op
+--     , text = msg.value
+--     , placeholder = Nothing
+--     , label = Input.labelHidden ""
+--     }
+-- Input.button
+--     [ Background.color Clr.goldFusion
+--     , Border.width 2
+--     , focused [ Background.color Clr.imperialRed ]
+--     , padding 10
+--     ]
+--     { onPress = Just (Op "ButtonPressed")
+--     , label = text "Some button text"
+--     }
+-- paragraph [ onClick <| Op "CurrentOp paragrah" ] [ text "current operation is: ", text msg.value ]
