@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<div style="display: flex; gap: 10px;">
+    <style>
+        .editor {
+            padding: 5000px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            font-family: "Source Code Pro", monospace;
+            font-size: 14px;
+            font-weight: 400;
+            min-height: 240px;
+            letter-spacing: normal;
+            line-height: 20px;
+            padding: 10px;
+            flex-grow: true;
+            width: 100%;
+            margin-bottom: 20px;
+            /* min-width: 300px; */
+            ;
+            tab-size: 4;
+            color: red;
+        }
+    </style>
+    <div class="editor" id="X"></div>
+    <div class="editor" id="Y"></div>
+    <script type="module">
+        import { CodeJar } from "../../../codejar/dist/codejar.js"
+        let jar_e = CodeJar(document.getElementById("X"), (_) => { })
+        jar_e.onUpdate(x => {
+            let count = document.getElementById("count")
+            count.textContent = parseInt(count.textContent) + 1
+         })
+        jar_e.updateCode(`#let foo(x) = {x+x*x}
+
+#while true
+{
+  repeat[.]  
+}`)
+        let jar_f = CodeJar(document.getElementById("Y"), (_) => { })
+        jar_f.updateCode("ruuup")
+    </script>
+</div>
+<center id="count" style="border: #ae4b4b; padding: 15px; ; border-style: solid;">0</center>

@@ -1,6 +1,8 @@
 +++
 title = "My first post"
-date = 2019-11-27
+date = 2023-07-22
 +++
 
-This is my first blog post.
+Let's show off about typstfmt
+
+{{ format_editor() }}
