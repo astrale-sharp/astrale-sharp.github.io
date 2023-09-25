@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "codejar": "^4.2.0"
+    "codejar": "^4.2.0",
+    "codemirror": "^5.65.15",
+    "static": "^2.0.0"
   }
 }

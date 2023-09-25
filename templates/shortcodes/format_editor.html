@@ -1,45 +1,73 @@
 <!DOCTYPE html>
 
-<div style="display: flex; gap: 10px;">
+<div style="display: flex; gap: 10px;justify-content: center;">
     <style>
         .editor {
             padding: 5000px;
-            background: #fff;
+            background: var(--bgColor);
             border-radius: 6px;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
             font-family: "Source Code Pro", monospace;
             font-size: 14px;
             font-weight: 400;
-            min-height: 240px;
+            height: 300px;
+            width: 400px;
             letter-spacing: normal;
             line-height: 20px;
-            padding: 10px;
-            flex-grow: true;
-            width: 100%;
+            padding: 15px;
+            word-break: normal;
+            word-wrap: normal;
+            overflow: auto;
             margin-bottom: 20px;
-            /* min-width: 300px; */
-            ;
+            border-style: solid;
             tab-size: 4;
-            color: red;
+            color: var(--fgColor);
         }
     </style>
-    <div class="editor" id="X"></div>
-    <div class="editor" id="Y"></div>
+    <div class="editor" id="X" wrap="soft"></div>
+    <div style="font-size: 100pt;">&#x2192;</div>
+    <div class="editor" id="Y" wrap="soft"></div>
     <script type="module">
-        import { CodeJar } from "../../../codejar/dist/codejar.js"
-        let jar_e = CodeJar(document.getElementById("X"), (_) => { })
-        jar_e.onUpdate(x => {
-            let count = document.getElementById("count")
-            count.textContent = parseInt(count.textContent) + 1
-         })
-        jar_e.updateCode(`#let foo(x) = {x+x*x}
+        let snippet = `#let foo(x) = {x+x*x}
 
-#while true
-{
-  repeat[.]  
-}`)
-        let jar_f = CodeJar(document.getElementById("Y"), (_) => { })
-        jar_f.updateCode("ruuup")
+#while true {repeat[.]}`
+
+        import { CodeJar } from "/codejar/dist/codejar.js"
+        import {initSync, highlight , format_default} from "/tweb/tweb.js" 
+        import * as tweb from "/tweb/tweb.js"
+        await tweb.default("/tweb/tweb_bg.wasm"); // init
+        const fhighlight = (editor) => {
+            let code = editor.textContent
+            code = highlight(code)
+            console.log(code)    
+            code = code.replaceAll('<span class="typ-key">', '<span style="color: var(--red)">')
+            code = code.replaceAll('<span class="typ-func">', '<span style="color: var(--blue)">')
+            code = code.replaceAll('<span class="typ-str">', '<span style="color: var(--green)">')
+            console.log(editor.innerHTML)
+            editor.innerHTML = code
+        }
+
+        let jar_e = CodeJar(document.getElementById("X"), fhighlight)
+        jar_e.updateCode(snippet)
+
+        let jar_f = CodeJar(document.getElementById("Y"), fhighlight)
+        jar_f.updateCode(snippet)
+
+
+        console.log(document.getElementById("Y").innerHtml)
+        console.log(document.getElementById("Y").innerHTML)
+        
+        
+        
+        document.getElementById("Y").removeAttribute("contenteditable")
+        // jar_e.style.removeAttribute("overflowWrap")
+        // jar_f.style.removeAttribute("overflowWrap")
+
+
+        jar_f.updateCode(format_default(snippet))
+
+        jar_e.onUpdate(x => {
+           jar_f.updateCode(format_default(x))
+        })
     </script>
 </div>
-<center id="count" style="border: #ae4b4b; padding: 15px; ; border-style: solid;">0</center>

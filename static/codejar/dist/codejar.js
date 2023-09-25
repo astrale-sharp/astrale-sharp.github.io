@@ -22,10 +22,13 @@ export function CodeJar(editor, highlight, opt = {}) {
     let prev; // code content prior keydown event
     editor.setAttribute('contenteditable', 'plaintext-only');
     editor.setAttribute('spellcheck', options.spellcheck ? 'true' : 'false');
-    editor.style.outline = 'none';
-    editor.style.overflowWrap = 'break-word';
-    editor.style.overflowY = 'auto';
+    // editor.setAttribute('overflow','scroll')
+    // editor.style.outline = 'none';
+    // editor.style.overflowWrap = 'break-word';
+    // editor.style.overflow = 'scroll';
+    // editor.style.overflowX = 'auto';
     editor.style.whiteSpace = 'pre-wrap';
+
     const doHighlight = (editor, pos) => {
         highlight(editor, pos);
     };
