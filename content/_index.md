@@ -1,8 +1,9 @@
 +++
 +++
 
-# Bienvenue sur mon site Portfolio !
+# Welcome to my portefolio website!
 
-## Qui je suis?
+This site is made to showcase what I did, it's made with [Zola](https://www.getzola.org/)
+with some custom javascript, CSS and HTML templates.
 
-## À quoi sert ce site?
+- You can see a Typst formatter I made [here](./blog/typstfmt)
