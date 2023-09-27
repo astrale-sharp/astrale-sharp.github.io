@@ -32,6 +32,13 @@ jobs:
     env:
         ZOLA_VERSION: "0.17.2"
     steps:
+      - name: Install wasm-pack
+      - uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: 'latest'
+      - name: compile tweb
+        run : |
+          echo "oopsies daysy"
       - name: Install Zola
         run: |
           set -x
