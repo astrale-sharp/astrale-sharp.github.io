@@ -25,49 +25,53 @@
         }
     </style>
     <div class="editor" id="X" wrap="soft"></div>
-    <div style="font-size: 100pt;">&#x2192;</div>
+    <div style="font-size: 100pt;">&#x2192;
+        <p id="tool" hidden style="font-size: 10pt; text-align: center;">Syntax error</p>
+    </div>
     <div class="editor" id="Y" wrap="soft"></div>
     <script type="module">
+        const tool = document.getElementById("tool")
         let snippet = `#let foo(x) = {x+x*x}
 
 #while true {repeat[.]}`
 
         import { CodeJar } from "/codejar/dist/codejar.js"
-        import {initSync, highlight , format_default} from "/tweb/tweb.js" 
+        import { initSync, highlight, format_default, is_erroneous } from "/tweb/tweb.js"
         import * as tweb from "/tweb/tweb.js"
         await tweb.default("/tweb/tweb_bg.wasm"); // init
+
         const fhighlight = (editor) => {
             let code = editor.textContent
             code = highlight(code)
-            console.log(code)    
             code = code.replaceAll('<span class="typ-key">', '<span style="color: var(--red)">')
             code = code.replaceAll('<span class="typ-func">', '<span style="color: var(--blue)">')
             code = code.replaceAll('<span class="typ-str">', '<span style="color: var(--green)">')
-            console.log(editor.innerHTML)
             editor.innerHTML = code
         }
-
-        let jar_e = CodeJar(document.getElementById("X"), fhighlight)
+        let editor_e = document.getElementById("X")
+        const jar_e = CodeJar(editor_e, fhighlight)
         jar_e.updateCode(snippet)
 
-        let jar_f = CodeJar(document.getElementById("Y"), fhighlight)
+        let editor_f = document.getElementById("Y")
+        const jar_f = CodeJar(editor_f, fhighlight)
         jar_f.updateCode(snippet)
 
 
-        console.log(document.getElementById("Y").innerHtml)
-        console.log(document.getElementById("Y").innerHTML)
-        
-        
-        
-        document.getElementById("Y").removeAttribute("contenteditable")
-        // jar_e.style.removeAttribute("overflowWrap")
-        // jar_f.style.removeAttribute("overflowWrap")
 
+        document.getElementById("Y").removeAttribute("contenteditable")
 
         jar_f.updateCode(format_default(snippet))
 
         jar_e.onUpdate(x => {
-           jar_f.updateCode(format_default(x))
+            jar_f.updateCode(format_default(x))
+            if (is_erroneous(x)) {
+                editor_f.style.borderColor = "red"
+                tool.removeAttribute("hidden")
+            }
+            else {
+                tool.setAttribute("hidden", "")
+                editor_f.style.borderColor = ""
+            }
         })
     </script>
 </div>
