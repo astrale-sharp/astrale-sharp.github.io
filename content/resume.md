@@ -1,12 +1,5 @@
 +++
-title = "Mon CV"
+title = "My Resume"
 +++
 
-## Parcours
-
-
-## Exploits sans commune mesure
-
-- exploit 1
-- exploit B
-- exploit ꞵ
+<object data="cv.pdf" type="application/pdf" width="800vh" height="100%">
