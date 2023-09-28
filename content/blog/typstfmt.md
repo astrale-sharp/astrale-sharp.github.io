@@ -1,6 +1,6 @@
 +++
-title = "My first post"
-date = 2023-07-22
+title = "typstfmt, a formatter for the Typst language!"
+date = 2023-09-22
 +++
 
 If you didn't know, [Typst](https://typst.app/docs/) is a new typesetting software concurrent to LateX. It's brand new, It's written in Rust. I went ahead and wrote a formatter for it which you can see showcased below. It has 100 github stars at the moment.
