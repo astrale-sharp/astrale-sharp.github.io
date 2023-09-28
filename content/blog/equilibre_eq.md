@@ -13,4 +13,4 @@ Treating the data and presenting it required a good mastery of regex as well.
 
 It's not 100% perfect and polished cause as a teacher, I didn't have plenty of times but it's still pretty solid!
 
-{{ godot() }}
+ {{ godot(id="equilibre_equation") }}
