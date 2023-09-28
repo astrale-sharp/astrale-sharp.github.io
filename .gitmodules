@@ -1,3 +1,6 @@
 [submodule "themes/anemone"]
 	path = themes/anemone
 	url = https://github.com/astrale-sharp/anemone
+[submodule "static/equilibre_equation"]
+	path = static/equilibre_equation
+	url = git@github.com:astrale-sharp/equilibre_equation.git
