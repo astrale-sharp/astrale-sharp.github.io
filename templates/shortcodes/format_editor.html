@@ -31,10 +31,17 @@
     <div class="editor" id="Y" wrap="soft"></div>
     <script type="module">
         const tool = document.getElementById("tool")
-        let snippet = `#let foo(x) = {x+x*x}
+        const snippet = `Plain sentences like this are Markup
+
+$"This is math mode in brackets"$
+
+$ beta = 4 times pi $ 
+
+// This is a comment
+// \`#\` makes you enter code mode
+#let function(x) = {x+x*x}
 
 #while true {repeat[.]}`
-
         import { CodeJar } from "/codejar/dist/codejar.js"
         import { initSync, highlight, format_default, is_erroneous } from "/tweb/tweb.js"
         import * as tweb from "/tweb/tweb.js"
@@ -54,7 +61,6 @@
 
         let editor_f = document.getElementById("Y")
         const jar_f = CodeJar(editor_f, fhighlight)
-        jar_f.updateCode(snippet)
 
 
 
