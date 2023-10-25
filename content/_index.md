@@ -11,6 +11,6 @@ Créer des articles prends du temps, et je préfère créer des exemples de qual
 Ce site a été crée avec [Zola](https://www.getzola.org/) et CSS/HTML/JS.
 
 
-- L'article le plus abouti, sur [la création d'un outil de formatage pour Typst ici.](./blog/typstfmt)
-- Article sur [une démo React](./articles/todo_react.md)
+- L'article le plus abouti, sur [la création d'un outil de formatage pour Typst ici.](./articles/typstfmt)
+- Article sur [une démo React](./articles/todo-react)
 - Liste des articles [ici](./articles/)
