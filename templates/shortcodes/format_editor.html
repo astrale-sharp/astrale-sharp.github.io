@@ -51,6 +51,7 @@ $ beta = 4 times pi $
             let code = editor.textContent
             code = highlight(code)
             code = code.replaceAll('<span class="typ-key">', '<span style="color: var(--red)">')
+            code = code.replaceAll('<span class="typ-comment">', '<span style="color: var(--grey)">')
             code = code.replaceAll('<span class="typ-func">', '<span style="color: var(--blue)">')
             code = code.replaceAll('<span class="typ-str">', '<span style="color: var(--green)">')
             editor.innerHTML = code

@@ -22,9 +22,9 @@ author = "Astrale Cercy"
 [[extra.header_nav]]
 en = { name = "/home", url = "/" }
 [[extra.header_nav]]
-en = { name = "/blog", url = "/blog" }
+en = { name = "/articles", url = "/articles" }
 [[extra.header_nav]]
-en = { name = "/resume", url = "/resume" }
+en = { name = "/CV", url = "/resume" }
 
 
 # header_nav = [
