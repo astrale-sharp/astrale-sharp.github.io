@@ -12,5 +12,5 @@ Il n'est pas possible de faire fonctionner ce server depuis une page statique (p
 Vous pouvez cependant tester le server en suivant les instructions du README de la page github.
 
 
-[Cliquer ici pour visualiser.](/todo-revived/index.html)
+[Cliquer ici pour visualiser.](/todo-revived/)
 
