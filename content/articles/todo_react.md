@@ -3,13 +3,11 @@ title = "Todo React"
 date = 2023-10-23
 +++
 
-La page suivante est un example minimale d'application
-crée à l'aide de React.js.
-Cette application est connectée à un server qui permet de conserver les données.
+La page suivante est un example minimal d'application
+créé à l'aide de React.js.
+Cette application est connectée à un serveur ce qui lui permet de conserver les données.
 
-Il n'est pas possible de faire fonctionner ce server depuis une page statique (par définition...) comme github pages.
-
-Vous pouvez cependant tester le server en suivant les instructions du README de la page github.
+Il n'est pas possible de faire fonctionner ce serveur depuis une page statique (par définition...) comme github pages, pour tester cette fonctionnalité, il faudra vous rendre sur la page github dédiée au projet et lancer le serveur de développement manuellement.
 
 
 [Cliquer ici pour visualiser.](/todo-revived/)
