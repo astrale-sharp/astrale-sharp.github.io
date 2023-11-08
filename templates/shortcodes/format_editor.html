@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 
-<div style="display: flex; gap: 10px;justify-content: center;">
+<div style="
+            display: flex; 
+            gap: 0px;
+            justify-content: center; 
+            /* flex-direction: column; */
+            margin : 0pt; padding: 0pt;
+            width: 100%;
+            /* border: black solid 3pt; */
+
+            ">
     <style>
         .editor {
-            padding: 5000px;
             background: var(--bgColor);
             border-radius: 6px;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -11,24 +19,37 @@
             font-size: 14px;
             font-weight: 400;
             height: 300px;
-            width: 400px;
+            min-width: 400px;
             letter-spacing: normal;
             line-height: 20px;
             padding: 15px;
             word-break: normal;
             word-wrap: normal;
             overflow: auto;
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
             border-style: solid;
             tab-size: 4;
             color: var(--fgColor);
         }
     </style>
     <div class="editor" id="X" wrap="soft"></div>
-    <div style="font-size: 100pt;">&#x2192;
-        <p id="tool" hidden style="font-size: 10pt; text-align: center;">Syntax error</p>
+
+    <div style="font-size: 30pt;
+                text-align: center; 
+                min-width: 70pt;
+                height: 100%;
+                margin-top: auto;
+                margin-bottom: auto;
+                height: fit-content;">
+        &#x2192;
+
+        <p id="tool" hidden style="font-size: 10pt; text-align: center;">
+            Syntax error
+        </p>
     </div>
+
     <div class="editor" id="Y" wrap="soft"></div>
+
     <script type="module">
         const tool = document.getElementById("tool")
         const snippet = `Plain sentences like this are Markup
