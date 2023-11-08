@@ -6,7 +6,7 @@ date = 2023-09-22
 
 [Typst](https://typst.app/docs/) est un nouveau language de typesetting visant à remplacer TeX/LaTeX, écrit en Rust.
 
-J'ai désigné et réalisé l'outil de formatage actuel du language, qui a pour travail de rendre le code déjà écrit plus lisible et esthétique. Il a <span style="display: inline;" id="count">plus de 100 </span> étoiles github pour le moment.
+J'ai désigné et réalisé l'outil de formatage actuel du language, qui a pour travail de rendre le code déjà écrit plus lisible et esthétique. Il a <span style="background-color: var(--dimYellow);"> <span id="count">plus de 100 </span> étoiles github pour le moment. </span>
 
 Les formateurs sont des outils très utiles mais difficile à produire, il y a beaucoup d'opportunité
 de sauter des lignes lorsqu'ont réécrit le code et beaucoup de contexte à prendre en compte.
