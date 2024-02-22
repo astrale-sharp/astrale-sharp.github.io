@@ -1,20 +1,16 @@
 +++
-title = "typstfmt, un formateur pour Typst!"
+title = "typstfmt, a Typst formatter with a future!"
 date = 2023-09-22
 +++
 
 
-[Typst](https://typst.app/docs/) est un nouveau language de typesetting visant à remplacer TeX/LaTeX, écrit en Rust.
+[Typst](https://typst.app/docs/) is a typesetting language written in Rust and aiming to replace  TeX/LaTeX.
 
-J'ai désigné et réalisé l'outil de formatage actuel du language, qui a pour travail de rendre le code déjà écrit plus lisible et esthétique. Il a <span style="background-color: var(--dimYellow);"> <span id="count">plus de 100 </span> étoiles github pour le moment. </span>
+I made the first and most used formatter of the language so far, it has <span style="background-color: var(--dimYellow);"> <span id="count">more than 200 </span> github stars as of right now. </span>
 
-Les formateurs sont des outils très utiles mais difficile à produire, il y a beaucoup d'opportunité
-de sauter des lignes lorsqu'ont réécrit le code et beaucoup de contexte à prendre en compte.
-Il est aussi important de s'assurer que le code à la même sémantique après avoir été formaté. 
+Formatters can be hard to write and maintain and are complex software, Typst is especially challenging given it does care about whitespace unlike many other languages, it's multi mode makes it challenging to keep the semantic untouched. This is why typstfmt has more than two hundreds tests.
 
-Typst en est un exemple particulièrement compliqué étant donnés ses modes de codes multiples.
-
-Ci dessous, j'ai créé un éditeur de Typst qui vous montre à droite la version formatée du code.
+You can have a preview of my work here:
 
 {{ format_editor() }}
 

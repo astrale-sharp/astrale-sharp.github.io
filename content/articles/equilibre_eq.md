@@ -3,9 +3,8 @@ title = "Équilibre et équations chimique"
 date = 2023-09-28
 +++
 
-J'ai créé la démo suivante pour aider mes élèves collégiens à équilibrer
-des équations chimiques.
+The following demo is in french and was made for my students, it helps equilibrating chemistry equations. It uses Godot and regexes.
 
-Ce programme a été fait avec Godot et utilise les Regex (expression régulières).
+
 
  {{ godot(id="equilibre_equation") }}
