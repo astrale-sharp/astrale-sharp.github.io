@@ -12,7 +12,7 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 wasm-bindgen = "0.2.84"
-typstfmt_lib = { git = "https://github.com/astrale-sharp/typstfmt" }
+typstfmt_lib = { git = "https://github.com/astrale-sharp/typstfmt", tag = "0.2.7" }
 typst-syntax = { git = "https://github.com/typst/typst.git", tag = "v0.7.0" }
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
