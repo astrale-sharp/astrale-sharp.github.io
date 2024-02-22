@@ -1,16 +1,15 @@
 +++
 +++
 
-# Bienvenue sur mon site porte-folio!
+# Welcome to my website
 
-Ce site à pour but de montrer mes contributions principales au monde de 
-l'open source et de venir renforcer mon CV avec des démonstrations de mes capacités.
+This website is here to showcase my contributions to the open source world and strengthen my resume.
 
-Créer des articles prends du temps, et je préfère créer des exemples de qualités que en quantité.
+Writing article takes time and I favor quality over quantity, you should ask me about my ongoing work if you plan to hire me.
 
-Ce site a été crée avec [Zola](https://www.getzola.org/) et CSS/HTML/JS.
+This website was created using [Zola](https://www.getzola.org/) and CSS/HTML/JS.
 
 
-- L'article le plus abouti, sur [la création d'un outil de formatage pour Typst ici.](./articles/typstfmt)
-- Article sur [une démo React](./articles/todo-react)
-- Liste des articles [ici](./articles/)
+- The most interesting article:  [typstfmt.](./articles/typstfmt)
+- [React.js demo](./articles/todo-react)
+- The rest of the articles [here](./articles/)
