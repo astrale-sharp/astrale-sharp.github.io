@@ -4,7 +4,6 @@ date = 2023-10-23
 description = "MVP of a todo application made in React.js"
 [extra]
 order = 1
-image = "images/pic02.jpg"
 +++
 
 
