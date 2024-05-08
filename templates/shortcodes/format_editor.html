@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<div style="
+            display: flex; 
+            gap: 0px;
+            justify-content: center; 
+            /* flex-direction: column; */
+            margin : 0pt; padding: 0pt;
+            width: 100%;
+            /* border: black solid 3pt; */
+
+            ">
+    <style>
+        .editor {
+            /* background: var(--bgColor); */
+            background: darkslateblue;
+            border-radius: 6px;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            font-family: "Source Code Pro", monospace;
+            font-size: 14px;
+            font-weight: 400;
+            height: 300px;
+            min-width: 400px;
+            letter-spacing: normal;
+            line-height: 20px;
+            padding: 15px;
+            word-break: normal;
+            word-wrap: normal;
+            overflow: auto;
+            /* margin-bottom: 20px; */
+            border-style: solid;
+            tab-size: 4;
+            color: var(--fgColor);
+        }
+    </style>
+    <div class="editor" id="X" wrap="soft"></div>
+
+    <div style="font-size: 30pt;
+                text-align: center; 
+                min-width: 70pt;
+                height: 100%;
+                margin-top: auto;
+                margin-bottom: auto;
+                height: fit-content;">
+        &#x2192;
+
+        <p id="tool" hidden style="font-size: 10pt; text-align: center;">
+            Syntax error
+        </p>
+    </div>
+
+    <div class="editor" id="Y" wrap="soft"></div>
+
+    <script type="module">
+        const tool = document.getElementById("tool")
+        const snippet = `Plain sentences like this are Markup
+
+$"This is math mode in brackets"$
+
+$ beta = 4 times pi $ 
+
+// This is a comment
+// \`#\` makes you enter code mode
+#let function(x) = {x+x*x}
+
+#while true {repeat[.]}`
+        import { CodeJar } from "/codejar/dist/codejar.js"
+        import { initSync, highlight, format_default, is_erroneous } from "/tweb/tweb.js"
+        import * as tweb from "/tweb/tweb.js"
+        await tweb.default("/tweb/tweb_bg.wasm"); // init
+
+        const fhighlight = (editor) => {
+            let code = editor.textContent
+            code = highlight(code)
+            console.log(code)
+            code = code.replaceAll('<span class="typ-key">', '<span style="color: red">')
+            code = code.replaceAll('<span class="typ-comment">', '<span style="color: gray">')
+            code = code.replaceAll('<span class="typ-func">', '<span style="color: blue">')
+            code = code.replaceAll('<span class="typ-str">', '<span style="color: lightgreen">')
+            editor.innerHTML = code
+        }
+        let editor_e = document.getElementById("X")
+        const jar_e = CodeJar(editor_e, fhighlight)
+        jar_e.updateCode(snippet)
+
+        let editor_f = document.getElementById("Y")
+        const jar_f = CodeJar(editor_f, fhighlight)
+
+
+
+        document.getElementById("Y").removeAttribute("contenteditable")
+
+        jar_f.updateCode(format_default(snippet))
+
+        jar_e.onUpdate(x => {
+            jar_f.updateCode(format_default(x))
+            if (is_erroneous(x)) {
+                editor_f.style.borderColor = "red"
+                tool.removeAttribute("hidden")
+            }
+            else {
+                tool.setAttribute("hidden", "")
+                editor_f.style.borderColor = ""
+            }
+        })
+    </script>
+</div>
