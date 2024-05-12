@@ -17,8 +17,8 @@
 	<nav id="menu">
 		<ul class="links">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="generic.html">Generic</a></li>
-			<li><a href="elements.html">Elements</a></li>
+			<li><a class="scrolly" href="#one">Articles</a></li>
+			<li><a class="scrolly" href="#resume">Resume</a></li>
 		</ul>
 	</nav>
 
@@ -31,9 +31,16 @@
 			<div class="content">
 				{{section.content | safe }}
 			</div>
+			<div style="margin-bottom: 10pt;">
+				<em>
+					This website was created using
+					<a href="https://www.getzola.org/">Zola</a>
+					and using a modified version of an
+					<a href="https://html5up.net/forty">html5up template</a>
+				</em>
+			</div>
 
 			<div class="">
-
 				<ul>
 					<li>
 						<a href="./00-typstfmt">The main article about a formatter I made</a>
@@ -44,6 +51,7 @@
 				</ul>
 
 				<ul class="actions">
+					<li><a href="#footer" class="button scrolly">Get in touch</a></li>
 					<li><a href="#one" class="button next scrolly">Take a look</a></li>
 				</ul>
 			</div>
@@ -59,7 +67,7 @@
 
 	<section id="one" class="tiles">
 		{% for post in section.pages | sort(attribute="extra.order") %}
-		{% set i = loop.index0 % 12 %}
+		{% set i = loop.index % 12 %}
 		<article>
 			<span class="image">
 				<img src=images/pic0{{i}}.jpg alt="" />
@@ -71,6 +79,13 @@
 		</article>
 
 		{% endfor %}
+	</section>
+
+
+	<section style="margin-top: 50px; margin-left: auto; margin-right: auto; width: 900px">
+		<article>
+			<object data="cv.pdf" type="application/pdf" width="900px" height="1200px"></object>
+		</article>
 	</section>
 
 	{{ super() }}
