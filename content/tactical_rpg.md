@@ -11,7 +11,7 @@ image = "assets/tactical_demo.gif"
 
 <div style="margin-left: 40%; margin-right: 40%;">
 
-[github link](https://github.com/astrale-sharp/tacticalRPG/tree/in-dev)
+[github link](https://github.com/astrale-sharp/tacticalRPG/)
 
 </div>
 
