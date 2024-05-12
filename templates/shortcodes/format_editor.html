@@ -12,20 +12,19 @@
             ">
     <style>
         .editor {
-            /* background: var(--bgColor); */
             background: darkslateblue;
-            border-radius: 6px;
+            border-radius: 16px;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
             font-family: "Source Code Pro", monospace;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 400;
-            height: 300px;
-            min-width: 400px;
+            height: 600px;
+            min-width: 700px;
             letter-spacing: normal;
             line-height: 20px;
             padding: 15px;
             word-break: normal;
-            word-wrap: normal;
+            word-wrap: none;
             overflow: auto;
             /* margin-bottom: 20px; */
             border-style: solid;
@@ -53,17 +52,46 @@
 
     <script type="module">
         const tool = document.getElementById("tool")
-        const snippet = `Plain sentences like this are Markup
+        const snippet = `
+This is Markup code, it would just display as text.
 
-$"This is math mode in brackets"$
+// Get expected amount of cell positions
+// in the table (considering colspan and rowspan)
+#let get-expected-grid-len(items, col_len: 0) = {
+    let len = 0
 
-$ beta = 4 times pi $ 
+    // maximum explicit 'y' specified
+    let max_explicit_y = items
+        .filter(c => c.y != auto)
+        .fold(0, (acc, cell) => {
+            if (is-tablex-cell(cell)
+                    and type(cell.y) in ("integer", "float")
+                    and cell.y > acc) {
+                cell.y
+            } else {
+                acc
+            }
+        })
 
-// This is a comment
-// \`#\` makes you enter code mode
-#let function(x) = {x+x*x}
+    for item in items {
+        if is-tablex-cell(item) and item.x == auto and item.y == auto {
+            // cell occupies (colspan * rowspan) spaces
+            len += item.colspan * item.rowspan
+        } else if type(item) == "content" {
+            len += 1
+        }
+    }
 
-#while true {repeat[.]}`
+    let rows(len) = calc.ceil(len / col_len)
+
+    while rows(len) < max_explicit_y {
+        len += col_len
+    }
+
+    len
+}
+
+`
         import { CodeJar } from "/codejar/dist/codejar.js"
         import { initSync, highlight, format_default, is_erroneous } from "/tweb/tweb.js"
         import * as tweb from "/tweb/tweb.js"
@@ -72,7 +100,6 @@ $ beta = 4 times pi $
         const fhighlight = (editor) => {
             let code = editor.textContent
             code = highlight(code)
-            console.log(code)
             code = code.replaceAll('<span class="typ-key">', '<span style="color: red">')
             code = code.replaceAll('<span class="typ-comment">', '<span style="color: gray">')
             code = code.replaceAll('<span class="typ-func">', '<span style="color: blue">')
@@ -95,12 +122,14 @@ $ beta = 4 times pi $
         jar_e.onUpdate(x => {
             jar_f.updateCode(format_default(x))
             if (is_erroneous(x)) {
-                editor_f.style.borderColor = "red"
+                editor_e.style.boxShadow = "0 2px 2px 0 darkred, 0 1px 5px 0 darkred, 0 3px 1px -2px darkred"
+                editor_f.style.boxShadow = "0 2px 2px 0 darkred, 0 1px 5px 0 darkred, 0 3px 1px -2px darkred"
                 tool.removeAttribute("hidden")
             }
             else {
                 tool.setAttribute("hidden", "")
-                editor_f.style.borderColor = ""
+                editor_e.style.boxShadow = "0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)"
+                editor_f.style.boxShadow = "0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)"
             }
         })
     </script>
