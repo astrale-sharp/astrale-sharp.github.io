@@ -1,10 +1,8 @@
 +++
 [extra]
-headline = "Hi, Welcome to my website"
+headline = "Welcome to my Portfolio website"
 +++
 
-This website is here to showcase my contributions to the open source world and strengthen my resume.
+I'm Astrale and I've been programming passionately for 10+ years. My journey started with Python and Linux but I since fell in love with Rust, Elm, and Godot and many more technologies.
 
-Writing article takes time and I favor quality over quantity, you should ask me about my ongoing work if you plan to hire me.
-
-This website was created using [Zola](https://www.getzola.org/) and using a modified version of an [html5up template](https://html5up.net/forty)
+I taught Physics and Chemistry in France for 4 years but I'm looking to find a new job in development. I'm interested in backend, frontend, video game development, ui, layout systems, technical challenges, Rust, and more.
