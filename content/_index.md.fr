@@ -1,0 +1,8 @@
++++
+[extra]
+headline = "Bienvenu sur mon site Porte-folio!"
++++
+
+Je m'appelle Astrale et je code depuis plus de ans. J'ai commencé l'informatique avec Python et Linux mais depuis je me suis passionnée de Rust, Elm, Godot ...
+
+J'ai enseigné la Physique Chimie en France pendant 4 ans mais je cherche désormais un travail dans le développement informatique. Je suis intéressée par le backend, frontend, développement de jeux vidéo, interface utilisateur, système de Layout (Typst), les défis techniques et Rust.
