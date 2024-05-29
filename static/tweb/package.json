@@ -1,0 +1,17 @@
+{
+  "name": "tweb",
+  "collaborators": [
+    "Astrale_works <ash4567@outlook.fr>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "tweb_bg.wasm",
+    "tweb.js",
+    "tweb.d.ts"
+  ],
+  "module": "tweb.js",
+  "types": "tweb.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
