@@ -1,6 +1,6 @@
 {
-  "name": "egui Template PWA",
-  "short_name": "egui-template-pwa",
+  "name": "ecstime",
+  "short_name": "ecstime",
   "icons": [
     {
       "src": "./assets/favicon-192x192.png",
